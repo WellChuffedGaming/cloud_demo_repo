@@ -1,0 +1,103 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMkaQ4BEm4gtp8hgLTRifzh",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/WellChuffedGaming/cloud_demo_repo/blob/main/Answer%20Generation%20without%20CSV%20file%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aXiqUL1KZIEo",
+        "outputId": "293c440d-d416-4250-bd77-6c120d2e5cc4"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "greeting\n"
+          ]
+        }
+      ],
+      "source": [
+        "patterns = {\n",
+        "    \"greeting\": [\"hi\", \"hey\", \"help\", \"hello\"],\n",
+        "    \"access\": [\"access\", \"lost\", \"account\", \"where\"],\n",
+        "    \"expiry\": [\"limited\", \"timeframe\", \"expire\", \"expiry\"],\n",
+        "    \"release\": [\"when\", \"release\", \"month\", \"date\"],\n",
+        "    \"revisited\": [\"live\", \"revisited\", \"revisit\", \"visit\"]\n",
+        "}\n",
+        "\n",
+        "class IntentClassifier(object):\n",
+        "\n",
+        "  def __init__(self, patterns):\n",
+        "    self.patterns = patterns\n",
+        "\n",
+        "  def classify(self, text):\n",
+        "\n",
+        "    for intent, pattern in self.patterns.items():\n",
+        "\n",
+        "      for word in pattern:\n",
+        "\n",
+        "        if word in text.lower():\n",
+        "\n",
+        "          return intent\n",
+        "\n",
+        "    return \"question not found, please rephrase\"\n",
+        "\n",
+        "intent_classifier = IntentClassifier(patterns)\n",
+        "\n",
+        "classification = intent_classifier.classify(\"Hi\")\n",
+        "\n",
+        "print(classification)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class AnswerGenerator(object):\n",
+        "\n",
+        "  def generateAnswer(self, intent):\n",
+        "\n",
+        "    if intent == \"greeting\":\n",
+        "      return \"Hello, how can I help you?\"\n",
+        "\n",
+        "    if intent == \"access\":\n",
+        "\n",
+        "      return \"Access response\"\n",
+        ""
+      ],
+      "metadata": {
+        "id": "cksfWbk5cp9A"
+      },
+      "execution_count": 12,
+      "outputs": []
+    }
+  ]
+}
